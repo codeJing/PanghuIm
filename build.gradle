@@ -48,5 +48,6 @@ ext{
     airpanelVersion = "1.1.0"
     lameVersion = "1.0.0"
 
+    flycoTabLayoutLib = '2.1.2@aar'
 
 }

@@ -22,7 +22,7 @@
             android:paddingLeft="@dimen/len_4"
             android:paddingRight="@dimen/len_4">
 
-            <net.qiujuer.italker.common.widget.PortraitView
+            <com.jing.common.widget.PortraitView
                 android:id="@+id/im_portrait"
                 android:layout_width="@dimen/len_40"
                 android:layout_height="@dimen/len_40"
@@ -57,7 +57,7 @@
         </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/lay_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -78,19 +78,22 @@
         app:layout_anchor="@id/lay_container"
         app:layout_anchorGravity="bottom|end" />
 
-    <android.support.design.widget.BottomNavigationView
+
+    <com.jing.common.widget.Navigation
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/len_52"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        android:elevation="@dimen/len_4"
-        android:outlineProvider="bounds"
-        android:translationZ="@dimen/len_8"
-        app:itemIconTint="@color/text_nav"
-        app:itemTextColor="@color/text_nav"
-        app:menu="@menu/navigation_items"
-        tools:targetApi="lollipop"
-        tools:visibility="invisible" />
+        app:tl_iconHeight="23dp"
+        app:tl_iconWidth="23dp"
+        app:tl_indicator_color="#2C97DE"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="#2C97DE"
+        app:tl_textUnselectColor="#66000000"
+        app:tl_textsize="12sp"
+        app:tl_underline_color="#DDDDDD"
+        app:tl_underline_height="1dp"
+        />
 
 </android.support.design.widget.CoordinatorLayout>
