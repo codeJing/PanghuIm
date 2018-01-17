@@ -2,10 +2,10 @@
 <resources>
 
     <string-array name="tab_menu">
-        <item>1</item>
-        <item>1</item>
-        <item>1</item>
-        <item>1</item>
+        <item>消息</item>
+        <item>电话</item>
+        <item>联系人</item>
+        <item>我</item>
 
     </string-array>
 

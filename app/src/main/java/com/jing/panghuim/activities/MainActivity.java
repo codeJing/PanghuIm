@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,10 +23,12 @@ import com.jing.panghuim.frags.main.ContactFragment;
 import com.jing.panghuim.frags.main.MyFragment;
 import com.jing.panghuim.frags.main.PhoneFragment;
 
+import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.widget.FloatActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -41,13 +44,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @BindView(R.id.lay_container)
     ViewPager mViewPager;
     @BindView(R.id.btn_action)
-    FloatActionButton mFab;
+    FloatActionButton mFaBtn;
     @BindView(R.id.navigation)
     Navigation mNavigation;
     //导航栏标签集合
     private ArrayList<CustomTabEntity> mTabList = new ArrayList<>();
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
-    private String[] mTitles = getResources().getStringArray(R.array.tab_menu);
+    private String[] mTitles;
     //设置点击与未点击图标
     private int[] mTabUnSelectIds = {
             R.drawable.tab_home_unselect, R.drawable.tab_speech_unselect,
@@ -64,7 +67,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     protected void initWidget() {
         super.initWidget();
-        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mNavigation.setOnTabSelectListener(this);
         mViewPager.addOnPageChangeListener(this);
     }
@@ -73,7 +75,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     protected void initData() {
         super.initData();
-
+        mTitles = getResources().getStringArray(R.array.tab_menu);
         mFragmentList.add(new ChatFragment());
         mFragmentList.add(new PhoneFragment());
         mFragmentList.add(new ContactFragment());
@@ -82,11 +84,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         for (int i = 0; i < mTitles.length; i++) {
             mTabList.add(new TabEntity(mTitles[i], mTabSelectIds[i], mTabUnSelectIds[i]));
         }
+        //设置导航栏与viewpager
         mNavigation.setTabData(mTabList);
+        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
     }
 
 
-    //viewpager OnPageChangeListener 实现方法
+    //viewpager 监听的实现方法
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -99,11 +103,25 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
+
+        float transY = 0;
         mNavigation.setCurrentTab(position);
+        if (position == 1){
+            mFaBtn.setImageResource(R.drawable.ic_contact_add);
+        }else {
+            transY = Ui.dipToPx(getResources(),76);
+        }
+
+        mFaBtn.animate().translationY(transY).
+                setInterpolator(new AnticipateOvershootInterpolator(1))
+                .setDuration(480)
+                .start();
+
+
     }
 
 
-    //setOnTabSelectListener 实现方法
+    //Navigation 点击事件监听的 实现方法
 
     @Override
     public void onTabSelect(int position) {

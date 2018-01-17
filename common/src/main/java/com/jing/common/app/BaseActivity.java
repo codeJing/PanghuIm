@@ -18,9 +18,10 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         initWindows();
         setContentView(getContentLayoutId());
         initWidget();
@@ -53,7 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
-
+    //处理返回键
     @Override
     public void onBackPressed() {
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
