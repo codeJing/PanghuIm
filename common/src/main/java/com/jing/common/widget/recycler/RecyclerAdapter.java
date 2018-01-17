@@ -49,10 +49,10 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     @Override
     public int getItemViewType(int position) {
-        return getItemViewType(position,mDataList.get(position));
+        return getItemViewType(position, mDataList.get(position));
     }
 
-    protected  abstract  int getItemViewType(int position, Data data);
+    protected abstract int getItemViewType(int position, Data data);
 
     @Override
     public int getItemCount() {
@@ -83,7 +83,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         return false;
     }
 
-
+    //设置点击事件
     protected interface OnRecyclerItemClick<Data> {
         void onClick(RecyclerAdapter.ViewHolder viewHolder, Data data);
 
@@ -94,7 +94,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         this.mOnRecyclerItemClick = OnRecyclerItemClick;
     }
 
-
+    //设置viewHolder
     public static abstract class ViewHolder<Data> extends RecyclerView.ViewHolder {
         private RecyclerAdapterCallBack<Data> mCallBack;
         protected Data mData;
@@ -124,7 +124,8 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     }
 
     /**
-     *  实现update 方法
+     * 实现update 方法
+     *
      * @param data
      * @param viewHolder
      */
@@ -132,9 +133,9 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     public void update(Data data, ViewHolder<Data> viewHolder) {
         // 得到当前ViewHolder的坐标
         int pos = viewHolder.getAdapterPosition();
-        if (pos > 0){
+        if (pos > 0) {
             mDataList.remove(pos);
-            mDataList.add(pos,data);
+            mDataList.add(pos, data);
             notifyItemChanged(pos);
         }
     }
@@ -169,9 +170,9 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
      * @param dataList Data
      */
     public void addAll(Collection<Data> dataList) {
-        if (dataList != null || dataList.size() > 0){
-        mDataList.addAll(dataList);
-        notifyItemRangeInserted(mDataList.size(), dataList.size());
+        if (dataList != null || dataList.size() > 0) {
+            mDataList.addAll(dataList);
+            notifyItemRangeInserted(mDataList.size(), dataList.size());
         }
     }
 
@@ -181,7 +182,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
      * @param dataList 一个新的集合
      */
     public void replace(Collection<Data> dataList) {
-        if (dataList != null || dataList.size() > 0){
+        if (dataList != null || dataList.size() > 0) {
             mDataList.clear();
             mDataList.addAll(dataList);
             notifyDataSetChanged();
@@ -190,14 +191,34 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     }
 
 
-    public  void remove(int pos){
+    public void remove(int pos) {
         mDataList.remove(pos);
         notifyItemRemoved(pos);
     }
 
-    public  void clear(){
+    public void clear() {
         mDataList.clear();
         notifyDataSetChanged();
+    }
+
+
+    /**
+     * 对点击事件的回掉接口做一次实现
+     *
+     * @param <Data>
+     */
+    public static abstract class OnRecyclerItemClickImpl<Data> implements OnRecyclerItemClick<Data> {
+
+
+        @Override
+        public void onClick(ViewHolder viewHolder, Data data) {
+
+        }
+
+        @Override
+        public void onLongClick(ViewHolder viewHolder, Data data) {
+
+        }
     }
 
 }
