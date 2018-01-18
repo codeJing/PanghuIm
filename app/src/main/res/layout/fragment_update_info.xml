@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-<!--tools:context="net.qiujuer.italker.push.frags.account.UpdateInfoFragment"-->
-    <net.qiujuer.italker.common.widget.PortraitView
+    tools:context="com.jing.panghuim.account.UpdateInfoFragment">
+
+    <com.jing.common.widget.PortraitView
         android:id="@+id/im_portrait"
         android:layout_width="@dimen/portraitMaxSize"
         android:layout_height="@dimen/portraitMaxSize"

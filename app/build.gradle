@@ -41,6 +41,8 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
     implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$rootProject.ext.flycoTabLayoutLib"
+    compile "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
+
 
     implementation project(':common')
 }

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-<!--tools:context="net.qiujuer.italker.push.frags.media.GalleryFragment"-->
+    tools:context="com.jing.panghuim.media.GalleryFragment">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -19,7 +19,7 @@
             app:titleTextColor="@color/textPrimary" />
     </android.support.design.widget.AppBarLayout>
 
-    <net.qiujuer.italker.common.widget.GalleryView
+    <com.jing.common.widget.GalleryView
         android:id="@+id/galleryView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

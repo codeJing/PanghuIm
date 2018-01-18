@@ -73,7 +73,7 @@ public class GalleryView extends RecyclerView {
      * 设置初始化数据
      * @param load
      */
-    public void setLoad(LoaderManager load,SelectedChangeListener listener) {
+    public void setLoad(LoaderManager load, SelectedChangeListener listener) {
         load.initLoader(LOADER_ID, null, loaderCallback);
         this.mListener = listener;
 
