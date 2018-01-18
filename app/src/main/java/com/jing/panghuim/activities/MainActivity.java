@@ -1,5 +1,7 @@
 package com.jing.panghuim.activities;
 
+import android.Manifest;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -31,10 +33,15 @@ import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+import pub.devrel.easypermissions.PermissionRequest;
 
-public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, OnTabSelectListener {
+public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, OnTabSelectListener, View.OnClickListener, EasyPermissions.PermissionCallbacks{
 
-
+    // 权限回调的标示
+    private static final int RC = 0x0100;
     @BindView(R.id.appbar)
     View mLayAppbar;
     @BindView(R.id.im_portrait)
@@ -69,6 +76,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         super.initWidget();
         mNavigation.setOnTabSelectListener(this);
         mViewPager.addOnPageChangeListener(this);
+        mFaBtn.setOnClickListener(this);
     }
 
 
@@ -87,6 +95,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         //设置导航栏与viewpager
         mNavigation.setTabData(mTabList);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        requestPerm();
     }
 
 
@@ -106,10 +115,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
         float transY = 0;
         mNavigation.setCurrentTab(position);
-        if (position == 1){
+        if (position == 1) {
             mFaBtn.setImageResource(R.drawable.ic_contact_add);
-        }else {
-            transY = Ui.dipToPx(getResources(),76);
+        } else {
+            transY = Ui.dipToPx(getResources(), 76);
         }
 
         mFaBtn.animate().translationY(transY).
@@ -133,6 +142,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     }
 
+    //floatButton
+    @Override
+    public void onClick(View view) {
+        AccountActivity.start(this);
+    }
+
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
 
@@ -152,6 +168,55 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         }
 
 
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+
+
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        // 如果权限有没有申请成功的权限存在，则弹出弹出框，用户点击后去到设置界面自己打开权限
+//        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+//            new AppSettingsDialog
+//                    .Builder(this)
+//                    .build()
+//                    .show();
+//        }
+    }
+
+    /**
+     * 申请权限的方法
+     */
+    @AfterPermissionGranted(RC)
+    private void requestPerm() {
+
+        String[] perms = new String[]{
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.RECORD_AUDIO
+        };
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            // Already have permission, do the thing
+            // ...
+        } else {
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, getString(R.string.title_assist_permissions),
+                    RC, perms);
+        }
     }
 
 }

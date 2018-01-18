@@ -1,5 +1,6 @@
 package com.jing.panghuim.activities;
 
+import android.content.Context;
 import android.content.Intent;
 
 import com.jing.common.app.BaseActivity;
@@ -12,6 +13,11 @@ public class AccountActivity extends BaseActivity {
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_account;
+    }
+
+
+    public  static  void start(Context context){
+        context.startActivity(new Intent(context,AccountActivity.class));
     }
 
 
@@ -28,5 +34,8 @@ public class AccountActivity extends BaseActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
             mUpDateFragment.onActivityResult(requestCode,resultCode,data);
     }
+
+
+
 
 }

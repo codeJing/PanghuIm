@@ -1,11 +1,16 @@
 package com.jing.panghuim.media;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.jing.common.widget.GalleryView;
 import com.jing.panghuim.R;
@@ -22,11 +27,23 @@ public class GalleryFragment extends DialogFragment implements GalleryView.Selec
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        getDialog().setCanceledOnTouchOutside(true);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         mGalleryView = (GalleryView) root.findViewById(R.id.galleryView);
+        //Do something
+        // 设置宽度为屏宽、靠近屏幕底部。
+        final Window window = getDialog().getWindow();
+        window.setBackgroundDrawableResource(R.color.trans);
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER;
+        wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        wlp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(wlp);
         return root;
     }
+
+
 
     @Override
     public void onStart() {

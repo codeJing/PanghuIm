@@ -42,7 +42,7 @@ dependencies {
 
     implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$rootProject.ext.flycoTabLayoutLib"
     compile "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
-
+    implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
 
     implementation project(':common')
 }

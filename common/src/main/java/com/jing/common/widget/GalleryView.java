@@ -250,7 +250,7 @@ public class GalleryView extends RecyclerView {
                         IMAGE_PROJECTION,
                         null,
                         null,
-                        IMAGE_PROJECTION[2] + "DESC"); // 倒序查询
+                        IMAGE_PROJECTION[2] + " DESC"); // 倒序查询
             }
             return null;
         }

@@ -38,7 +38,7 @@ ext{
     glideVersion = '3.7.0'
     circleimageviewVersion = '2.1.0'
     ucropVersion = "2.2.0-native"
-    easyPMVersion = "0.3.0"
+    easyPMVersion = '1.1.2'
     ossVersion = '2.3.0'
 
     gsonVersion = '2.8.0'
