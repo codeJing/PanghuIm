@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     compile "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
+    compile project(':common')
 }

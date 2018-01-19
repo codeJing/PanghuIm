@@ -44,5 +44,5 @@ dependencies {
     compile "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
 
-    implementation project(':common')
+    implementation project(':factory')
 }
