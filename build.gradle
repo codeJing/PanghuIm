@@ -20,6 +20,10 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+        //个推私有Maven URL地址
+        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
     }
 }
 
@@ -32,7 +36,7 @@ ext{
     versionCode = 1;
     versionName = '1.0.0'
     // 相关依赖库版本
-    supportVersion = '26.1.0'
+    supportVersion = '27.0.1'
     butterknifeVersion = '8.8.1'
     geniusVersion = '2.0.0'
     glideVersion = '3.7.0'
@@ -43,8 +47,8 @@ ext{
 
     gsonVersion = '2.8.0'
     retrofitVersion = '2.1.0'
-    getuiVersion = '2.9.3.0'
-    dbflowVersion = "4.0.0-beta7"
+    getuiVersion = '2.11.1.0'
+    dbflowVersion = '4.2.4'
     airpanelVersion = "1.1.0"
     lameVersion = "1.0.0"
 

@@ -1,6 +1,8 @@
 package com.jing.panghuim.activities;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -65,6 +67,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private int[] mTabSelectIds = {
             R.drawable.tab_home_select, R.drawable.tab_speech_select,
             R.drawable.tab_contact_select, R.drawable.tab_more_select};
+
+    /**
+     * MainActivity 显示的入口
+     *
+     * @param context 上下文
+     */
+    public static void start(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
+
 
     @Override
     protected int getContentLayoutId() {
@@ -145,7 +157,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     //floatButton
     @Override
     public void onClick(View view) {
-        AccountActivity.start(this);
+        UserActivity.start(this);
     }
 
 
