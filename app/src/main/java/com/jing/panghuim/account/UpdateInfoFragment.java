@@ -15,7 +15,7 @@ import com.jing.factory.Factory;
 import com.jing.factory.net.UploadHelper;
 import com.jing.panghuim.App;
 import com.jing.panghuim.R;
-import com.jing.panghuim.media.GalleryFragment;
+import com.jing.panghuim.frags.media.GalleryFragment;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
