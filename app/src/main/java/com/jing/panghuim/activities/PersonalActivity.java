@@ -1,5 +1,6 @@
 package com.jing.panghuim.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -136,8 +137,8 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
         mPortrait.setup(Glide.with(this), user);
         mName.setText(user.getName());
         mDesc.setText(user.getDesc());
-        mFollows.setText(String.format(getString(R.string.label_follows), user.getFollows()));
-        mFollowing.setText(String.format(getString(R.string.label_following), user.getFollowing()));
+        mFollows.setText(String.format(getString(R.string.label_follows), new Object[]{user.getFollows()}));
+        mFollowing.setText(String.format(getString(R.string.label_following), new Object[]{user.getFollowing()}));
         hideLoading();
     }
 
