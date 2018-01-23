@@ -9,9 +9,9 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-import com.jing.factory.Factory;
-import com.jing.utils.HashUtil;
 
+import net.qiujuer.italker.factory.Factory;
+import net.qiujuer.italker.utils.HashUtil;
 
 import java.io.File;
 import java.util.Date;
@@ -19,6 +19,7 @@ import java.util.Date;
 /**
  * 上传工具类，用于上传任意文件到阿里OSS存储
  *
+ * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 public class UploadHelper {

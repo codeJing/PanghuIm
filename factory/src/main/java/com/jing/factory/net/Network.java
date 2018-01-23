@@ -2,10 +2,9 @@ package com.jing.factory.net;
 
 import android.text.TextUtils;
 
-
-import com.jing.common.Common;
-import com.jing.factory.Factory;
-import com.jing.factory.persistence.Account;
+import net.qiujuer.italker.common.Common;
+import net.qiujuer.italker.factory.Factory;
+import net.qiujuer.italker.factory.persistence.Account;
 
 import java.io.IOException;
 
@@ -19,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 网络请求的封装
  *
+ * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 public class Network {
