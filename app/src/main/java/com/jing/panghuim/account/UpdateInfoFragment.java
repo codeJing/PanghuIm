@@ -28,6 +28,7 @@ public class UpdateInfoFragment extends BaseFragment {
     @BindView(R.id.im_portrait)
     PortraitView mPortrait;
 
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.fragment_update_info;
