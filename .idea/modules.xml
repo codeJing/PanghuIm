@@ -3,10 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PanghuIm.iml" filepath="$PROJECT_DIR$/PanghuIm.iml" />
+      <module fileurl="file://E:\jjwork\123\PanghuIm\PanghuIm.iml" filepath="E:\jjwork\123\PanghuIm\PanghuIm.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\jjwork\123\PanghuIm\app\app.iml" filepath="E:\jjwork\123\PanghuIm\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://E:\jjwork\123\PanghuIm\common\common.iml" filepath="E:\jjwork\123\PanghuIm\common\common.iml" />
       <module fileurl="file://$PROJECT_DIR$/factory/factory.iml" filepath="$PROJECT_DIR$/factory/factory.iml" />
+      <module fileurl="file://E:\jjwork\123\PanghuIm\factory\factory.iml" filepath="E:\jjwork\123\PanghuIm\factory\factory.iml" />
       <module fileurl="file://$PROJECT_DIR$/lang/lang.iml" filepath="$PROJECT_DIR$/lang/lang.iml" />
+      <module fileurl="file://E:\jjwork\123\PanghuIm\lang\lang.iml" filepath="E:\jjwork\123\PanghuIm\lang\lang.iml" />
     </modules>
   </component>
 </project>
